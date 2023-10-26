@@ -9,7 +9,7 @@ namespace ProjetoCinema.Models
         {
 
         }
-        public DbSet<ProjetoCinema.Models.Cadastro>? Cadastro { get; set; }
+        public DbSet<Cadastro>? Cadastro { get; set; }
 
     }
 }
