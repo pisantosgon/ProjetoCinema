@@ -15,4 +15,18 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: #C7B8DE;
+}
+.container-fluid {
+    background-color: purple;
+}
+.navbar{
+    padding: 0 !important;
+}
+.navbar-brand {
+    padding: 0 !important;
+}
+.navbar-brand img {
+    hight: 10px;
+    widht: 10px;
 }
