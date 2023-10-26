@@ -88,6 +88,60 @@ namespace ProjetoCinema.Migrations
 
                     b.ToTable("Cadastro");
                 });
+
+            modelBuilder.Entity("ProjetoCinema.Models.EspecialHorror", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("HorrorId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Classificacao")
+                        .HasColumnType("int")
+                        .HasColumnName("Classificacao");
+
+                    b.Property<string>("Filmes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Filmes");
+
+                    b.Property<DateTime>("HrSesssao")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("HrSesssao");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EspecialHorror");
+                });
+
+            modelBuilder.Entity("ProjetoCinema.Models.Filme", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("FilmesId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FilmeNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("FilmeNome");
+
+                    b.Property<int>("Idade")
+                        .HasColumnType("int")
+                        .HasColumnName("Idade");
+
+                    b.Property<DateTime>("SesssaoHora")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("SesssaoHora");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Filme");
+                });
 #pragma warning restore 612, 618
         }
     }

@@ -11,5 +11,13 @@ namespace ProjetoCinema.Models
         }
         public DbSet<Cadastro>? Cadastro { get; set; }
 
+        public DbSet<Bomboniere>? Bomboniere { get; set; }
+
+        public DbSet<Filme>? Filme { get; set; }
+
+        public DbSet<EspecialHorror>? EspecialHorror { get; set; }
+
+
+
     }
 }

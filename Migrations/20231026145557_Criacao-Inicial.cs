@@ -42,6 +42,36 @@ namespace ProjetoCinema.Migrations
                 {
                     table.PrimaryKey("PK_Cadastro", x => x.CadastroId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "EspecialHorror",
+                columns: table => new
+                {
+                    HorrorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Filmes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Classificacao = table.Column<int>(type: "int", nullable: false),
+                    HrSesssao = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EspecialHorror", x => x.HorrorId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Filme",
+                columns: table => new
+                {
+                    FilmesId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FilmeNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Idade = table.Column<int>(type: "int", nullable: false),
+                    SesssaoHora = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Filme", x => x.FilmesId);
+                });
         }
 
         /// <inheritdoc />
@@ -52,6 +82,12 @@ namespace ProjetoCinema.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cadastro");
+
+            migrationBuilder.DropTable(
+                name: "EspecialHorror");
+
+            migrationBuilder.DropTable(
+                name: "Filme");
         }
     }
 }
