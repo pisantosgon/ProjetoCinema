@@ -10,7 +10,6 @@ namespace ProjetoCinema.Models
 
         }
         public DbSet<ProjetoCinema.Models.Cadastro>? Cadastro { get; set; }
-        public DbSet<ProjetoCinema.Models.Bomboniere>? Bomboniere { get; set; }
 
     }
 }
