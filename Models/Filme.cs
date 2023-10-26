@@ -9,9 +9,9 @@ namespace ProjetoCinema.Models
         [Display(Name = "Codigo do Filme")]
         public int Id { get; set; }
 
-        [Column("Filme")]
+        [Column("FilmeNome")]
         [Display(Name = "Filme")]
-        public string Filme { get; set; } = string.Empty;
+        public string FilmeNome { get; set; } = string.Empty;
 
         [Column("Idade")]
         [Display(Name = "Classificação Indicativa")]
