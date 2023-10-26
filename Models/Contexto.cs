@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjetoCinema.Models;
 
 namespace ProjetoCinema.Models
 {
@@ -8,6 +9,7 @@ namespace ProjetoCinema.Models
         {
 
         }
+        public DbSet<ProjetoCinema.Models.Cadastro>? Cadastro { get; set; }
 
     }
 }
