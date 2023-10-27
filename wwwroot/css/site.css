@@ -34,9 +34,13 @@ body {
     background-color: #7F39FF;
 }
 .button {
-    background-color: #7F39FF;
+    background-color: #6A599D;
     color: white;
-    border: 1px solid #7F39FF;
+    border: 2px solid #6A599D;
+    border-radius: 3px;
+    padding: 1px 4px;
+    text-decoration: none;
+    font-weight: bold;
 }
 .policy {
     color: white;
