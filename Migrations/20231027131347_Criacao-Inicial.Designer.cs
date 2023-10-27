@@ -12,7 +12,7 @@ using ProjetoCinema.Models;
 namespace ProjetoCinema.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20231026145557_Criacao-Inicial")]
+    [Migration("20231027131347_Criacao-Inicial")]
     partial class CriacaoInicial
     {
         /// <inheritdoc />
@@ -34,20 +34,29 @@ namespace ProjetoCinema.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Bebidas")
+                    b.Property<string>("CategoriaProduto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Bebidas");
+                        .HasColumnName("CategoriaProduto");
 
-                    b.Property<string>("Guloseimas")
+                    b.Property<string>("DescricaoProduto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Guloseimas");
+                        .HasColumnName("DescricaoProduto");
 
-                    b.Property<string>("Pipocas")
+                    b.Property<string>("NomeProduto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Pipocas");
+                        .HasColumnName("NomeProduto");
+
+                    b.Property<int>("PrecoProduto")
+                        .HasColumnType("int")
+                        .HasColumnName("PrecoProduto");
+
+                    b.Property<string>("TamanhoProduto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("TamanhoProduto");
 
                     b.HasKey("Id");
 
@@ -68,6 +77,11 @@ namespace ProjetoCinema.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ClienteNome");
 
+                    b.Property<string>("Entrada")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Entrada");
+
                     b.Property<string>("EscolhaFilme")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -86,6 +100,11 @@ namespace ProjetoCinema.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Pedidos");
+
+                    b.Property<string>("Total")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Total");
 
                     b.HasKey("Id");
 

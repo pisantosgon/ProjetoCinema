@@ -31,20 +31,29 @@ namespace ProjetoCinema.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Bebidas")
+                    b.Property<string>("CategoriaProduto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Bebidas");
+                        .HasColumnName("CategoriaProduto");
 
-                    b.Property<string>("Guloseimas")
+                    b.Property<string>("DescricaoProduto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Guloseimas");
+                        .HasColumnName("DescricaoProduto");
 
-                    b.Property<string>("Pipocas")
+                    b.Property<string>("NomeProduto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Pipocas");
+                        .HasColumnName("NomeProduto");
+
+                    b.Property<int>("PrecoProduto")
+                        .HasColumnType("int")
+                        .HasColumnName("PrecoProduto");
+
+                    b.Property<string>("TamanhoProduto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("TamanhoProduto");
 
                     b.HasKey("Id");
 

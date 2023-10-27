@@ -55,7 +55,7 @@ namespace ProjetoCinema.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Pipocas,Bebidas,Guloseimas")] Bomboniere bomboniere)
+        public async Task<IActionResult> Create([Bind("Id,CategoriaProduto,NomeProduto,DescricaoProduto,TamanhoProduto,PrecoProduto")] Bomboniere bomboniere)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ProjetoCinema.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Pipocas,Bebidas,Guloseimas")] Bomboniere bomboniere)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoriaProduto,NomeProduto,DescricaoProduto,TamanhoProduto,PrecoProduto")] Bomboniere bomboniere)
         {
             if (id != bomboniere.Id)
             {

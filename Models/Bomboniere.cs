@@ -9,19 +9,27 @@ namespace ProjetoCinema.Models
         [Display(Name = "Codigo do Bomboniere")]
         public int Id { get; set; }
 
-        [Column("Pipocas")]
-        [Display(Name = "Pipocas")]
-        public string Pipocas { get; set; } = string.Empty;
+        [Column("CategoriaProduto")]
+        [Display(Name = "Categoria")]
+        public string CategoriaProduto { get; set; } = string.Empty;
 
-        [Column("Bebidas")]
-        [Display(Name = "Bebidas")]
-        public string Bebidas { get; set; } = string.Empty;
+        [Column("NomeProduto")]
+        [Display(Name = "Nome do Produto")]
+        public string NomeProduto { get; set; } = string.Empty;
 
-        [Column("Guloseimas")]
-        [Display(Name = "Guloseimas")]
+        [Column("DescricaoProduto")]
+        [Display(Name = "Descrição")]
 
-        public string Guloseimas { get; set; } = string.Empty;
+        public string DescricaoProduto { get; set; } = string.Empty;
 
+        [Column("TamanhoProduto")]
+        [Display(Name = "Tamanho/Quantidade")]
 
+        public string TamanhoProduto { get; set; } = string.Empty;
+
+        [Column("PrecoProduto")]
+        [Display(Name = "Preço")]
+
+        public int PrecoProduto { get; set; } 
     }
 }

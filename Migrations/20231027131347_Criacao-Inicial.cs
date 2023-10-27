@@ -17,9 +17,11 @@ namespace ProjetoCinema.Migrations
                 {
                     BomboniereId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Pipocas = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Bebidas = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Guloseimas = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CategoriaProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NomeProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DescricaoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TamanhoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrecoProduto = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +38,9 @@ namespace ProjetoCinema.Migrations
                     EscolhaFilme = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HrSessao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Lugar = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pedidos = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Pedidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Entrada = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Total = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
