@@ -55,7 +55,7 @@ namespace ProjetoCinema.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClienteNome,EscolhaFilme,HrSessao,Lugar,Pedidos")] Cadastro cadastro)
+        public async Task<IActionResult> Create([Bind("Id,ClienteNome,EscolhaFilme,HrSessao,Lugar,Pedidos,Entrada,Total")] Cadastro cadastro)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ProjetoCinema.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteNome,EscolhaFilme,HrSessao,Lugar,Pedidos")] Cadastro cadastro)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteNome,EscolhaFilme,HrSessao,Lugar,Pedidos,Entrada,Total")] Cadastro cadastro)
         {
             if (id != cadastro.Id)
             {

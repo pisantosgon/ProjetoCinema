@@ -32,5 +32,15 @@ namespace ProjetoCinema.Models
         [Display(Name = "Pedidos")]
         public string Pedidos { get; set; } = string.Empty;
 
+        [Column("Entrada")]
+        [Display(Name = "Entrada")]
+        public string Entrada { get; set; } = string.Empty;
+
+        [Column("Total")]
+        [Display(Name = "Valor total da compra")]
+        public string Total { get; set; } = string.Empty;
+
+
+
     }
 }
