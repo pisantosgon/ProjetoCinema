@@ -32,6 +32,6 @@ namespace ProjetoCinema.Models
         [Column("PrecoProduto")]
         [Display(Name = "Preço")]
 
-        public int PrecoProduto { get; set; } 
+        public string PrecoProduto { get; set; } = string.Empty;
     }
 }

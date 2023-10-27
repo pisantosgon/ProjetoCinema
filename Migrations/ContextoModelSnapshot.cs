@@ -44,8 +44,9 @@ namespace ProjetoCinema.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("NomeProduto");
 
-                    b.Property<int>("PrecoProduto")
-                        .HasColumnType("int")
+                    b.Property<string>("PrecoProduto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("PrecoProduto");
 
                     b.Property<string>("TamanhoProduto")

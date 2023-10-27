@@ -83,7 +83,7 @@ namespace ProjetoCinema.Migrations
                     NomeProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DescricaoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TamanhoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PrecoProduto = table.Column<int>(type: "int", nullable: false)
+                    PrecoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
