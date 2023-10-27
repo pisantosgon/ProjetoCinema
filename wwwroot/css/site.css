@@ -12,11 +12,10 @@ html {
   position: relative;
   min-height: 100%;
 }
-
 body {
-  margin-bottom: 60px;
-  background-color: #C7B8DE;
+    background-color: #E8DAFD;
 }
+
 .container-fluid {
     background-color: #7F39FF;
     color: white;

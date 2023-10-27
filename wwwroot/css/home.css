@@ -1,0 +1,7 @@
+﻿body {
+    margin-bottom: 60px;
+    background: url("../fotos/fundo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -330px;
+}
