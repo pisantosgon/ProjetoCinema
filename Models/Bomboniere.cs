@@ -9,9 +9,11 @@ namespace ProjetoCinema.Models
         [Display(Name = "Codigo do Bomboniere")]
         public int Id { get; set; }
 
-        [Column("CategoriaProduto")]
-        [Display(Name = "Categoria")]
-        public string CategoriaProduto { get; set; } = string.Empty;
+        [ForeignKey("CategoriaId")]
+        [Display(Name = "Codigo da Categoria")]
+        public int CategoriaId { get; set; }
+
+        public Categoria? Categoria { get; set; }
 
         [Column("NomeProduto")]
         [Display(Name = "Nome do Produto")]

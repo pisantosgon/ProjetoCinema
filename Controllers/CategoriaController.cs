@@ -9,90 +9,87 @@ using ProjetoCinema.Models;
 
 namespace ProjetoCinema.Controllers
 {
-    public class BomboniereController : Controller
+    public class CategoriaController : Controller
     {
         private readonly Contexto _context;
 
-        public BomboniereController(Contexto context)
+        public CategoriaController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: Bomboniere
+        // GET: Categoria
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Bomboniere.Include(b => b.Categoria);
-            return View(await contexto.ToListAsync());
+              return _context.Categoria != null ? 
+                          View(await _context.Categoria.ToListAsync()) :
+                          Problem("Entity set 'Contexto.Categoria'  is null.");
         }
 
-        // GET: Bomboniere/Details/5
+        // GET: Categoria/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Bomboniere == null)
+            if (id == null || _context.Categoria == null)
             {
                 return NotFound();
             }
 
-            var bomboniere = await _context.Bomboniere
-                .Include(b => b.Categoria)
+            var categoria = await _context.Categoria
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (bomboniere == null)
+            if (categoria == null)
             {
                 return NotFound();
             }
 
-            return View(bomboniere);
+            return View(categoria);
         }
 
-        // GET: Bomboniere/Create
+        // GET: Categoria/Create
         public IActionResult Create()
         {
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "CategoriaNome");
             return View();
         }
 
-        // POST: Bomboniere/Create
+        // POST: Categoria/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoriaId,NomeProduto,DescricaoProduto,TamanhoProduto,PrecoProduto")] Bomboniere bomboniere)
+        public async Task<IActionResult> Create([Bind("Id,CategoriaNome")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bomboniere);
+                _context.Add(categoria);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "CategoriaNome", bomboniere.CategoriaId);
-            return View(bomboniere);
+            return View(categoria);
         }
 
-        // GET: Bomboniere/Edit/5
+        // GET: Categoria/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Bomboniere == null)
+            if (id == null || _context.Categoria == null)
             {
                 return NotFound();
             }
 
-            var bomboniere = await _context.Bomboniere.FindAsync(id);
-            if (bomboniere == null)
+            var categoria = await _context.Categoria.FindAsync(id);
+            if (categoria == null)
             {
                 return NotFound();
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "CategoriaNome", bomboniere.CategoriaId);
-            return View(bomboniere);
+            return View(categoria);
         }
 
-        // POST: Bomboniere/Edit/5
+        // POST: Categoria/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoriaId,NomeProduto,DescricaoProduto,TamanhoProduto,PrecoProduto")] Bomboniere bomboniere)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoriaNome")] Categoria categoria)
         {
-            if (id != bomboniere.Id)
+            if (id != categoria.Id)
             {
                 return NotFound();
             }
@@ -101,12 +98,12 @@ namespace ProjetoCinema.Controllers
             {
                 try
                 {
-                    _context.Update(bomboniere);
+                    _context.Update(categoria);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BomboniereExists(bomboniere.Id))
+                    if (!CategoriaExists(categoria.Id))
                     {
                         return NotFound();
                     }
@@ -117,51 +114,49 @@ namespace ProjetoCinema.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "CategoriaNome", bomboniere.CategoriaId);
-            return View(bomboniere);
+            return View(categoria);
         }
 
-        // GET: Bomboniere/Delete/5
+        // GET: Categoria/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Bomboniere == null)
+            if (id == null || _context.Categoria == null)
             {
                 return NotFound();
             }
 
-            var bomboniere = await _context.Bomboniere
-                .Include(b => b.Categoria)
+            var categoria = await _context.Categoria
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (bomboniere == null)
+            if (categoria == null)
             {
                 return NotFound();
             }
 
-            return View(bomboniere);
+            return View(categoria);
         }
 
-        // POST: Bomboniere/Delete/5
+        // POST: Categoria/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Bomboniere == null)
+            if (_context.Categoria == null)
             {
-                return Problem("Entity set 'Contexto.Bomboniere'  is null.");
+                return Problem("Entity set 'Contexto.Categoria'  is null.");
             }
-            var bomboniere = await _context.Bomboniere.FindAsync(id);
-            if (bomboniere != null)
+            var categoria = await _context.Categoria.FindAsync(id);
+            if (categoria != null)
             {
-                _context.Bomboniere.Remove(bomboniere);
+                _context.Categoria.Remove(categoria);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BomboniereExists(int id)
+        private bool CategoriaExists(int id)
         {
-          return (_context.Bomboniere?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Categoria?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

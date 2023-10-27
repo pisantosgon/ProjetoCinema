@@ -12,7 +12,7 @@ using ProjetoCinema.Models;
 namespace ProjetoCinema.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20231027131347_Criacao-Inicial")]
+    [Migration("20231027163713_Criacao-Inicial")]
     partial class CriacaoInicial
     {
         /// <inheritdoc />
@@ -34,10 +34,8 @@ namespace ProjetoCinema.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CategoriaProduto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("CategoriaProduto");
+                    b.Property<int>("CategoriaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DescricaoProduto")
                         .IsRequired()
@@ -59,6 +57,8 @@ namespace ProjetoCinema.Migrations
                         .HasColumnName("TamanhoProduto");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Bomboniere");
                 });
@@ -109,6 +109,25 @@ namespace ProjetoCinema.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cadastro");
+                });
+
+            modelBuilder.Entity("ProjetoCinema.Models.Categoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("CategoriaId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoriaNome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("CategoriaNome");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categoria");
                 });
 
             modelBuilder.Entity("ProjetoCinema.Models.EspecialHorror", b =>
@@ -163,6 +182,17 @@ namespace ProjetoCinema.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Filme");
+                });
+
+            modelBuilder.Entity("ProjetoCinema.Models.Bomboniere", b =>
+                {
+                    b.HasOne("ProjetoCinema.Models.Categoria", "Categoria")
+                        .WithMany()
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categoria");
                 });
 #pragma warning restore 612, 618
         }

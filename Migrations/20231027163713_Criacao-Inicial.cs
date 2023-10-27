@@ -12,23 +12,6 @@ namespace ProjetoCinema.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Bomboniere",
-                columns: table => new
-                {
-                    BomboniereId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoriaProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NomeProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescricaoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TamanhoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PrecoProduto = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bomboniere", x => x.BomboniereId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Cadastro",
                 columns: table => new
                 {
@@ -45,6 +28,19 @@ namespace ProjetoCinema.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cadastro", x => x.CadastroId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categoria",
+                columns: table => new
+                {
+                    CategoriaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoriaNome = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categoria", x => x.CategoriaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,6 +72,34 @@ namespace ProjetoCinema.Migrations
                 {
                     table.PrimaryKey("PK_Filme", x => x.FilmesId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Bomboniere",
+                columns: table => new
+                {
+                    BomboniereId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoriaId = table.Column<int>(type: "int", nullable: false),
+                    NomeProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DescricaoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TamanhoProduto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrecoProduto = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bomboniere", x => x.BomboniereId);
+                    table.ForeignKey(
+                        name: "FK_Bomboniere_Categoria_CategoriaId",
+                        column: x => x.CategoriaId,
+                        principalTable: "Categoria",
+                        principalColumn: "CategoriaId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bomboniere_CategoriaId",
+                table: "Bomboniere",
+                column: "CategoriaId");
         }
 
         /// <inheritdoc />
@@ -92,6 +116,9 @@ namespace ProjetoCinema.Migrations
 
             migrationBuilder.DropTable(
                 name: "Filme");
+
+            migrationBuilder.DropTable(
+                name: "Categoria");
         }
     }
 }

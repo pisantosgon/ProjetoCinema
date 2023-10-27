@@ -17,6 +17,8 @@ namespace ProjetoCinema.Models
 
         public DbSet<EspecialHorror>? EspecialHorror { get; set; }
 
+        public DbSet<Categoria>? Categoria { get; set; }
+
 
 
     }
