@@ -13,8 +13,8 @@ builder.Services.AddControllersWithViews();
     (options => options.UseSqlServer("Data Source=SB-1490640\\SQLSENAI;Initial Catalog = ProjetoCinema;Integrated Security = True;TrustServerCertificate = True"));*/
 
 
-/*builder.Services.AddDbContext<Contexto> // Maria Heloísa
-    (options => options.UseSqlServer("Data Source=SB-1490647\\SQLSENAI;Initial Catalog = ProjetoCinema;Integrated Security = True;TrustServerCertificate = True"));*/
+builder.Services.AddDbContext<Contexto> // Maria Heloísa
+    (options => options.UseSqlServer("Data Source=SB-1490647\\SQLSENAI;Initial Catalog = ProjetoCinema;Integrated Security = True;TrustServerCertificate = True"));
 
 
 /*builder.Services.AddDbContext<Contexto> //  Maria Eduarda
