@@ -19,11 +19,23 @@ namespace ProjetoCinema.Controllers
         }
 
         // GET: Filme
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-              return _context.Filme != null ? 
-                          View(await _context.Filme.ToListAsync()) :
-                          Problem("Entity set 'Contexto.Filme'  is null.");
+            if (pesquisa == null)
+            {
+                return _context.Filme != null ?
+                            View(await _context.Filme.ToListAsync()) :
+                            Problem("Entity set 'Contexto.Filme'  is null.");
+            }
+            else
+            {
+                var filme =
+                    _context.Filme
+                    .Where(x => x.FilmeNome.Contains(pesquisa))
+                    .OrderBy(x => x.FilmeNome);
+
+                return View(filme); ;
+            }
         }
 
         // GET: Filme/Details/5

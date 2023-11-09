@@ -19,11 +19,23 @@ namespace ProjetoCinema.Controllers
         }
 
         // GET: EspecialHorror
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-              return _context.EspecialHorror != null ? 
-                          View(await _context.EspecialHorror.ToListAsync()) :
-                          Problem("Entity set 'Contexto.EspecialHorror'  is null.");
+            if (pesquisa == null)
+            {
+                return _context.EspecialHorror != null ?
+                            View(await _context.EspecialHorror.ToListAsync()) :
+                            Problem("Entity set 'Contexto.EspecialHorror'  is null.");
+            }
+            else
+            {
+                var especialhorror =
+                    _context.EspecialHorror
+                    .Where(x => x.Filmes.Contains(pesquisa))
+                    .OrderBy(x => x.Filmes);
+
+                return View(especialhorror);
+            }
         }
 
         // GET: EspecialHorror/Details/5
