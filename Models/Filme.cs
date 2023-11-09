@@ -21,5 +21,9 @@ namespace ProjetoCinema.Models
         [Display(Name = "Horário da Sessão")]
 
         public DateTime SesssaoHora { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Filme e Sessão")]
+        public string DescricaoCadastro => FilmeNome + " | " + SesssaoHora.ToString();
     }
 }

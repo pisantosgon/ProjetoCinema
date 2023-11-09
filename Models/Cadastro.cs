@@ -15,14 +15,11 @@ namespace ProjetoCinema.Models
         [Display(Name = "Nome do Cliente")]
         public string ClienteNome { get; set; } = string.Empty;
 
-        [Column("EscolhaFilme")]
-        [Display(Name = "Filme")]
-        public string EscolhaFilme { get; set; } = string.Empty;
+        [ForeignKey("FilmeId")]
+        [Display(Name = "Nome do Filme")]
+        public int FilmeId { get; set; }
 
-        [Column("HrSessao")]
-        [Display(Name = "Horário da Sessão")]
-
-        public DateTime HrSessao { get; set; }
+        public Filme? Filme { get; set; }
 
         [Column("Lugar")]
         [Display(Name = "Assento")]
@@ -38,9 +35,7 @@ namespace ProjetoCinema.Models
 
         [Column("Total")]
         [Display(Name = "Valor total da compra")]
-        public string Total { get; set; } = string.Empty;
-
-
+        public string Total { get; set; } = string.Empty;                  
 
     }
 }
