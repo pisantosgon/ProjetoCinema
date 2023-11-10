@@ -12,8 +12,8 @@ using ProjetoCinema.Models;
 namespace ProjetoCinema.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20231027164706_Criacao-Inicial")]
-    partial class CriacaoInicial
+    [Migration("20231110114945_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,14 +83,11 @@ namespace ProjetoCinema.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Entrada");
 
-                    b.Property<string>("EscolhaFilme")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("EscolhaFilme");
+                    b.Property<int?>("FilmeId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("HrSessao")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("HrSessao");
+                    b.Property<int>("FilmesId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Lugar")
                         .IsRequired()
@@ -108,6 +105,8 @@ namespace ProjetoCinema.Migrations
                         .HasColumnName("Total");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FilmeId");
 
                     b.ToTable("Cadastro");
                 });
@@ -194,6 +193,15 @@ namespace ProjetoCinema.Migrations
                         .IsRequired();
 
                     b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("ProjetoCinema.Models.Cadastro", b =>
+                {
+                    b.HasOne("ProjetoCinema.Models.Filme", "Filme")
+                        .WithMany()
+                        .HasForeignKey("FilmeId");
+
+                    b.Navigation("Filme");
                 });
 #pragma warning restore 612, 618
         }

@@ -15,9 +15,9 @@ namespace ProjetoCinema.Models
         [Display(Name = "Nome do Cliente")]
         public string ClienteNome { get; set; } = string.Empty;
 
-        [ForeignKey("FilmeId")]
+        [ForeignKey("FilmesId")]
         [Display(Name = "Nome do Filme")]
-        public int FilmeId { get; set; }
+        public int FilmesId { get; set; }
 
         public Filme? Filme { get; set; }
 

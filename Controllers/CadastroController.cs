@@ -47,7 +47,7 @@ namespace ProjetoCinema.Controllers
         // GET: Cadastro/Create
         public IActionResult Create()
         {
-            ViewData["FilmeId"] = new SelectList(_context.Filme, "Id", "DescricaoCadastro");
+            ViewData["FilmesId"] = new SelectList(_context.Filme, "Id", "DescricaoCadastro");
             return View();
         }
 
@@ -56,7 +56,7 @@ namespace ProjetoCinema.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClienteNome,FilmeId,Lugar,Pedidos,Entrada,Total")] Cadastro cadastro)
+        public async Task<IActionResult> Create([Bind("Id,ClienteNome,FilmesId,Lugar,Pedidos,Entrada,Total")] Cadastro cadastro)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +64,7 @@ namespace ProjetoCinema.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FilmeId"] = new SelectList(_context.Filme, "Id", "DescricaoCadastro", cadastro.FilmeId);
+            ViewData["FilmesId"] = new SelectList(_context.Filme, "Id", "DescricaoCadastro", cadastro.FilmesId);
             return View(cadastro);
         }
 
@@ -81,7 +81,7 @@ namespace ProjetoCinema.Controllers
             {
                 return NotFound();
             }
-            ViewData["FilmeId"] = new SelectList(_context.Filme, "Id", "DescricaoCadastro", cadastro.FilmeId);
+            ViewData["FilmesId"] = new SelectList(_context.Filme, "Id", "DescricaoCadastro", cadastro.FilmesId);
             return View(cadastro);
         }
 
@@ -90,7 +90,7 @@ namespace ProjetoCinema.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteNome,FilmeId,Lugar,Pedidos,Entrada,Total")] Cadastro cadastro)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteNome,FilmesId,Lugar,Pedidos,Entrada,Total")] Cadastro cadastro)
         {
             if (id != cadastro.Id)
             {
@@ -117,7 +117,7 @@ namespace ProjetoCinema.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FilmeId"] = new SelectList(_context.Filme, "Id", "DescricaoCadastro", cadastro.FilmeId);
+            ViewData["FilmesId"] = new SelectList(_context.Filme, "Id", "DescricaoCadastro", cadastro.FilmesId);
             return View(cadastro);
         }
 

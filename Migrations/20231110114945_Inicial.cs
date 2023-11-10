@@ -6,30 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjetoCinema.Migrations
 {
     /// <inheritdoc />
-    public partial class CriacaoInicial : Migration
+    public partial class Inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Cadastro",
-                columns: table => new
-                {
-                    CadastroId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ClienteNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EscolhaFilme = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HrSessao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Lugar = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pedidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Entrada = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Total = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cadastro", x => x.CadastroId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Categoria",
                 columns: table => new
@@ -96,10 +77,39 @@ namespace ProjetoCinema.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Cadastro",
+                columns: table => new
+                {
+                    CadastroId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClienteNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FilmesId = table.Column<int>(type: "int", nullable: false),
+                    FilmeId = table.Column<int>(type: "int", nullable: true),
+                    Lugar = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pedidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Entrada = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Total = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cadastro", x => x.CadastroId);
+                    table.ForeignKey(
+                        name: "FK_Cadastro_Filme_FilmeId",
+                        column: x => x.FilmeId,
+                        principalTable: "Filme",
+                        principalColumn: "FilmesId");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Bomboniere_CategoriaId",
                 table: "Bomboniere",
                 column: "CategoriaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cadastro_FilmeId",
+                table: "Cadastro",
+                column: "FilmeId");
         }
 
         /// <inheritdoc />
@@ -115,10 +125,10 @@ namespace ProjetoCinema.Migrations
                 name: "EspecialHorror");
 
             migrationBuilder.DropTable(
-                name: "Filme");
+                name: "Categoria");
 
             migrationBuilder.DropTable(
-                name: "Categoria");
+                name: "Filme");
         }
     }
 }

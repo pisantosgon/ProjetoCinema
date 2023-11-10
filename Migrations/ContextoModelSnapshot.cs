@@ -80,7 +80,10 @@ namespace ProjetoCinema.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Entrada");
 
-                    b.Property<int>("FilmeId")
+                    b.Property<int?>("FilmeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FilmesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Lugar")
@@ -193,9 +196,7 @@ namespace ProjetoCinema.Migrations
                 {
                     b.HasOne("ProjetoCinema.Models.Filme", "Filme")
                         .WithMany()
-                        .HasForeignKey("FilmeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FilmeId");
 
                     b.Navigation("Filme");
                 });
