@@ -41,10 +41,20 @@ body {
     text-decoration: none;
     font-weight: 400;
     margin-top: 10px;
+    transition-duration: 1s;
+}
+.button:hover {
+    color: white;
+    background-color: #7F39FF;
+    border: 2px solid #7F39FF;
+    transition-duration: 2s;
 }
 .lista {
     color: #6A599D;
     text-decoration: none;
+}
+.lista:hover {
+    color: #6A599D;
 }
 .policy {
     color: white;
